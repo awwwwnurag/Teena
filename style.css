@@ -599,9 +599,13 @@ body::before {
 }
 
 .audio-player audio::-webkit-media-controls-play-button {
+    display: inline-block !important;  /* ensure it shows */
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
+    width: 32px;   /* give it a proper size */
+    height: 32px;
 }
+
 
 .song-description {
     color: rgba(255, 255, 255, 0.8);
