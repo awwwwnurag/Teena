@@ -1283,7 +1283,7 @@ body::before {
     /* Mobile sticker positioning adjustments */
     .rose-sticker {
         top: 97%;
-        right: 0%;
+        right: -15%;
     }
     
     .dil-sticker {
@@ -1297,8 +1297,8 @@ body::before {
     }
     
     .bear-sticker {
-        bottom: 15%;
-        left: 10%;
+        bottom: 5%;
+        left: 5%;
     }
     
     .timeline h3,
