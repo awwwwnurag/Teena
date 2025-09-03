@@ -216,6 +216,33 @@ const confettiStyle = document.createElement('style');
 confettiStyle.textContent = confettiCSS;
 document.head.appendChild(confettiStyle);
 
+// Create sparkles effect
+function createSparkles() {
+    for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            sparkle.style.width = '6px';
+            sparkle.style.height = '6px';
+            sparkle.style.background = '#ffd700';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '1000';
+            sparkle.style.animation = 'sparkle 2s ease-out forwards';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                if (sparkle.parentNode) {
+                    sparkle.parentNode.removeChild(sparkle);
+                }
+            }, 2000);
+        }, i * 80);
+    }
+}
+
 // Trigger confetti on page load
 window.addEventListener('load', function() {
     setTimeout(createConfetti, 2000);
@@ -298,29 +325,128 @@ document.addEventListener('DOMContentLoaded', function() {
     
     photos.forEach(photo => {
         photo.addEventListener('click', function() {
+            const imgSrc = this.querySelector('img').src;
+            const imgAlt = this.querySelector('img').alt;
+            
+            // Create and show modal
+            openPhotoModal(imgSrc, imgAlt);
+            
             // Create floating hearts when clicking photos
             for (let i = 0; i < 2; i++) {
                 setTimeout(() => {
                     createFloatingHeart();
                 }, i * 100);
             }
-            
-            // Create sparkles around the clicked photo
-            const rect = this.getBoundingClientRect();
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
-            
-            for (let i = 0; i < 4; i++) {
-                setTimeout(() => {
-                    const angle = (i * 90) * Math.PI / 180;
-                    const sparkleX = x + Math.cos(angle) * 30;
-                    const sparkleY = y + Math.sin(angle) * 30;
-                    createSparkle(sparkleX, sparkleY);
-                }, i * 50);
-            }
         });
     });
 });
+
+// Audio Player Functionality
+function initializeAudioPlayers() {
+    const audioPlayers = document.querySelectorAll('.audio-player audio');
+    
+    audioPlayers.forEach(audio => {
+        audio.addEventListener('play', function() {
+            // Stop all other audio players when one starts playing
+            audioPlayers.forEach(otherAudio => {
+                if (otherAudio !== audio) {
+                    otherAudio.pause();
+                    otherAudio.currentTime = 0; // Reset to beginning
+                }
+            });
+        });
+    });
+}
+
+// Photo Modal Functionality
+function openPhotoModal(imgSrc, imgAlt) {
+    // Create modal overlay
+    const modal = document.createElement('div');
+    modal.className = 'photo-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img src="${imgSrc}" alt="${imgAlt}" class="modal-image">
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Add event listeners
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal || e.target.classList.contains('close-modal')) {
+            closePhotoModal();
+        }
+    });
+    
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closePhotoModal();
+        }
+    });
+    
+    // Animate modal in
+    setTimeout(() => {
+        modal.classList.add('show');
+        // Trigger fireworks when modal opens
+        createFireworks();
+    }, 10);
+}
+
+function closePhotoModal() {
+    const modal = document.querySelector('.photo-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            if (modal.parentNode) {
+                modal.parentNode.removeChild(modal);
+            }
+        }, 300);
+    }
+}
+
+// Fireworks Effect
+function createFireworks() {
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff', '#5f27cd'];
+    
+    // Create multiple firework bursts
+    for (let burst = 0; burst < 8; burst++) {
+        setTimeout(() => {
+            const centerX = Math.random() * window.innerWidth;
+            const centerY = Math.random() * window.innerHeight;
+            
+            // Create particles for each burst
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                document.body.appendChild(particle);
+                
+                // Animate particle
+                const angle = (i * 18) * Math.PI / 180;
+                const distance = 80 + Math.random() * 80;
+                const endX = centerX + Math.cos(angle) * distance;
+                const endY = centerY + Math.sin(angle) * distance;
+                
+                setTimeout(() => {
+                    particle.style.transform = `translate(${endX - centerX}px, ${endY - centerY}px)`;
+                    particle.style.opacity = '0';
+                }, 50);
+                
+                // Remove particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 5500);
+            }
+        }, burst * 150);
+    }
+}
 
 // Photo Gallery Functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -422,4 +548,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(createFloatingHeart, 1000);
         }
     });
+    
+    // Initialize audio players
+    initializeAudioPlayers();
 });

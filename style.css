@@ -11,6 +11,124 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     color: #333;
+    position: relative;
+}
+
+/* Floating hearts background effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(221, 160, 221, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(221, 160, 221, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 10% 70%, rgba(255, 182, 193, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 90% 10%, rgba(221, 160, 221, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 60% 40%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 30% 90%, rgba(221, 160, 221, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+    animation: floatingHearts 20s ease-in-out infinite;
+}
+
+@keyframes floatingHearts {
+    0%, 100% {
+        opacity: 0.7;
+        transform: translateY(0px) scale(1);
+    }
+    25% {
+        opacity: 0.9;
+        transform: translateY(-10px) scale(1.05);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(-5px) scale(1.02);
+    }
+    75% {
+        opacity: 0.9;
+        transform: translateY(-15px) scale(1.08);
+    }
+}
+
+/* Additional floating heart elements */
+.floating-heart-bg {
+    position: fixed;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.3;
+    animation: floatHeart 15s ease-in-out infinite;
+}
+
+.floating-heart-bg:nth-child(1) {
+    top: 15%;
+    left: 10%;
+    font-size: 3rem;
+    color: rgba(255, 182, 193, 0.6);
+    animation-delay: 0s;
+}
+
+.floating-heart-bg:nth-child(2) {
+    top: 25%;
+    right: 15%;
+    font-size: 2.5rem;
+    color: rgba(221, 160, 221, 0.5);
+    animation-delay: 2s;
+}
+
+.floating-heart-bg:nth-child(3) {
+    bottom: 20%;
+    left: 20%;
+    font-size: 2rem;
+    color: rgba(255, 182, 193, 0.4);
+    animation-delay: 4s;
+}
+
+.floating-heart-bg:nth-child(4) {
+    bottom: 30%;
+    right: 25%;
+    font-size: 3.5rem;
+    color: rgba(221, 160, 221, 0.5);
+    animation-delay: 6s;
+}
+
+.floating-heart-bg:nth-child(5) {
+    top: 60%;
+    left: 5%;
+    font-size: 2.8rem;
+    color: rgba(255, 182, 193, 0.4);
+    animation-delay: 8s;
+}
+
+.floating-heart-bg:nth-child(6) {
+    top: 40%;
+    right: 5%;
+    font-size: 2.2rem;
+    color: rgba(221, 160, 221, 0.4);
+    animation-delay: 10s;
+}
+
+@keyframes floatHeart {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-20px) rotate(5deg);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(-10px) rotate(-3deg);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translateY(-30px) rotate(8deg);
+        opacity: 0.6;
+    }
 }
 
 .container {
@@ -146,6 +264,95 @@ body {
 .anniversary-card {
     display: flex;
     justify-content: center;
+    position: relative;
+}
+
+/* Rose Sticker */
+.rose-sticker {
+    position: absolute;
+    top: 92%;
+    right: 20%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.rose-sticker img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    transition: all 0.3s ease;
+}
+
+.rose-sticker:hover img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+}
+
+/* Dil Sticker */
+.dil-sticker {
+    position: absolute;
+    bottom: 55%;
+    right: 19%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.dil-sticker img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    transition: all 0.3s ease;
+}
+
+.dil-sticker:hover img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+}
+
+/* Lily Sticker */
+.lily-sticker {
+    position: absolute;
+    top: 15%;
+    left: 22%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.lily-sticker img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    transition: all 0.3s ease;
+}
+
+.lily-sticker:hover img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+}
+
+/* Bear Sticker */
+.bear-sticker {
+    position: absolute;
+    bottom: 25%;
+    left: 15%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.bear-sticker img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    transition: all 0.3s ease;
+}
+
+.bear-sticker:hover img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
 }
 
 .card {
@@ -326,6 +533,83 @@ body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
+/* Dedicated Songs Section */
+.dedicated-songs {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    margin: 40px 0;
+    position: relative;
+}
+
+.dedicated-songs h3 {
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.songs-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.song-card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.song-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.song-card h4 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.audio-player {
+    text-align: center;
+}
+
+.audio-player audio {
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.audio-player audio::-webkit-media-controls-panel {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.audio-player audio::-webkit-media-controls-play-button {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.song-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 10px;
+}
+
 /* Heart Collage within Photo Gallery */
 .heart-collage-container {
     margin-bottom: 50px;
@@ -395,7 +679,122 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Photo rotation */
+.heart-photo.rotate-left {
+    transform: rotate(-90deg);
+}
+
+.heart-photo.rotate-left img {
+    object-fit: contain;
+    transform: none;
+}
+
+/* Story continues text */
+.heart-photo.story-continues {
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.story-text {
+    text-align: center;
+    padding: 9px;
+}
+
+.story-text span {
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    line-height: 1.2;
+    display: block;
+}
+
 /* Square grid layout - photos will be arranged naturally */
+
+/* Photo Modal Styles */
+.photo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.photo-modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 95%;
+    max-height: 95%;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.photo-modal.show .modal-content {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 10001;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(5px);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.close-modal:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    max-height: 95vh;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Fireworks Effect */
+.firework-particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10002;
+    transition: all 1.5s ease-out;
+    box-shadow: 0 0 10px currentColor;
+}
 
 /* Photo Gallery Section */
 .photo-gallery {
@@ -602,27 +1001,65 @@ body {
     flex-wrap: wrap;
 }
 
-.clickable-heart {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #e91e63, #f06292);
-    border-radius: 50%;
+.clickable-button {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.clickable-button span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.clickable-button i {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+/* Confetti Button */
+.confetti-btn {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.confetti-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+}
+
+/* Sparkles Button */
+.sparkles-btn {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
+}
+
+.sparkles-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.5);
+}
+
+/* Hearts Button */
+.heart-btn {
+    background: linear-gradient(135deg, #e91e63, #f06292);
     box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
 }
 
-.clickable-heart:hover {
+.heart-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 25px rgba(233, 30, 99, 0.5);
-}
-
-.clickable-heart i {
-    color: white;
-    font-size: 2rem;
 }
 
 /* Footer */
@@ -696,6 +1133,47 @@ body {
         padding: 30px 20px;
     }
     
+    .rose-sticker img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .dil-sticker img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .lily-sticker img {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .bear-sticker img {
+        width: 85px;
+        height: 85px;
+    }
+    
+    /* Tablet sticker positioning adjustments */
+    .rose-sticker {
+        top: 20%;
+        right: 20%;
+    }
+    
+    .dil-sticker {
+        bottom: 50%;
+        right: 15%;
+    }
+    
+    .lily-sticker {
+        top: 12%;
+        left: 18%;
+    }
+    
+    .bear-sticker {
+        bottom: 20%;
+        left: 12%;
+    }
+    
     .card-header h2 {
         font-size: 2rem;
     }
@@ -711,7 +1189,8 @@ body {
     .timeline h3,
     .quotes h3,
     .photo-gallery h3,
-    .interactive h3 {
+    .interactive h3,
+    .dedicated-songs h3 {
         font-size: 2rem;
     }
     
@@ -723,7 +1202,11 @@ body {
         width: 350px;
         height: 350px;
         grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(5, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+    
+    .story-text span {
+        font-size: 1rem;
     }
     
     .heart-collage-container {
@@ -745,13 +1228,17 @@ body {
         gap: 20px;
     }
     
-    .clickable-heart {
-        width: 60px;
-        height: 60px;
+    .clickable-button {
+        width: 80px;
+        height: 80px;
     }
     
-    .clickable-heart i {
+    .clickable-button i {
         font-size: 1.5rem;
+    }
+    
+    .clickable-button span {
+        font-size: 0.7rem;
     }
 }
 
@@ -769,10 +1256,52 @@ body {
         font-size: 1.8rem;
     }
     
+    .rose-sticker img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .dil-sticker img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .lily-sticker img {
+        width: 75px;
+        height: 75px;
+    }
+    
+    .bear-sticker img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    /* Mobile sticker positioning adjustments */
+    .rose-sticker {
+        top: 15%;
+        right: 15%;
+    }
+    
+    .dil-sticker {
+        bottom: 45%;
+        right: 12%;
+    }
+    
+    .lily-sticker {
+        top: 10%;
+        left: 15%;
+    }
+    
+    .bear-sticker {
+        bottom: 15%;
+        left: 10%;
+    }
+    
     .timeline h3,
     .quotes h3,
     .photo-gallery h3,
-    .interactive h3 {
+    .interactive h3,
+    .dedicated-songs h3 {
         font-size: 1.8rem;
     }
     
@@ -780,11 +1309,29 @@ body {
         font-size: 1.6rem;
     }
     
+    .songs-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .song-card {
+        min-width: 250px;
+        padding: 20px;
+    }
+    
+    .song-card h4 {
+        font-size: 1.3rem;
+    }
+    
     .heart-collage {
         width: 280px;
         height: 280px;
         grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+    }
+    
+    .story-text span {
+        font-size: 0.9rem;
     }
     
     .heart-collage-container {
@@ -799,13 +1346,17 @@ body {
         gap: 15px;
     }
     
-    .clickable-heart {
-        width: 50px;
-        height: 50px;
+    .clickable-button {
+        width: 70px;
+        height: 70px;
     }
     
-    .clickable-heart i {
+    .clickable-button i {
         font-size: 1.2rem;
+    }
+    
+    .clickable-button span {
+        font-size: 0.6rem;
     }
 }
 

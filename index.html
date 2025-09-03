@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+        <!-- Floating Hearts Background -->
+        <div class="floating-heart-bg">❤️</div>
+        <div class="floating-heart-bg">💕</div>
+        <div class="floating-heart-bg">💖</div>
+        <div class="floating-heart-bg">💗</div>
+        <div class="floating-heart-bg">💝</div>
+        <div class="floating-heart-bg">💘</div>
+        
     <div class="container">
         <!-- Header Section -->
         <header class="header">
@@ -27,6 +35,9 @@
         <main class="main-content">
             <!-- Anniversary Card -->
             <section class="anniversary-card">
+                <div class="rose-sticker">
+                    <img src="sticker/rose.png" alt="Rose sticker" loading="lazy">
+                </div>
                 <div class="card">
                     <div class="card-header">
                         <i class="fas fa-heart"></i>
@@ -79,6 +90,9 @@
 
             <!-- Love Quotes -->
             <section class="quotes">
+                <div class="bear-sticker">
+                    <img src="sticker/bear.png" alt="Bear sticker" loading="lazy">
+                </div>
                 <h3>What Love Means to Us</h3>
                 <div class="quote-carousel">
                     <div class="quote active">
@@ -90,11 +104,83 @@
                     <div class="quote">
                         <p>"Every love story is beautiful, but ours is my favorite."</p>
                     </div>
+                    <div class="quote">
+                        <p>"Two months of loving you feels like a lifetime of happiness."</p>
+                    </div>
+                    <div class="quote">
+                        <p>"Your smile is the sunshine that brightens my every day."</p>
+                    </div>
+                    <div class="quote">
+                        <p>"With you, every moment feels like a beautiful dream come true."</p>
+                    </div>
+                    <div class="quote">
+                        <p>"You don't just make my heart smile, you make my soul dance."</p>
+                    </div>
+                    <div class="quote">
+                        <p>"In your eyes, I found my home. In your heart, I found my love."</p>
+                    </div>
+                    <div class="quote">
+                        <p>"Every day with you is a new adventure filled with love and laughter."</p>
+                    </div>
+                    <div class="quote">
+                        <p>"You are the missing piece that makes my life complete."</p>
+                    </div>
+                    <div class="quote">
+                        <p>"Two months down, forever to go. I love you more each day."</p>
+                    </div>
+                    <div class="quote">
+                        <p>"Your love is the greatest gift I've ever received."</p>
+                    </div>
+                    <div class="quote">
+                        <p>"Together with you, everything feels possible and beautiful."</p>
+                    </div>
+                    <div class="quote">
+                        <p>"You are my favorite person in the entire world."</p>
+                    </div>
+                    <div class="quote">
+                        <p>"Every heartbeat reminds me of how much I love you."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dedicated Songs -->
+            <section class="dedicated-songs">
+                <div class="dil-sticker">
+                    <img src="sticker/dil.png" alt="Dil sticker" loading="lazy">
+                </div>
+                <h3>My Dedicated Songs for You</h3>
+                <div class="songs-container">
+                    <div class="song-card">
+                        <h4>What I'm Saying</h4>
+                        <div class="audio-player">
+                            <audio controls>
+                                <source src="audio/p11.mp3" type="audio/mpeg">
+                                <source src="audio/p11.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <p class="song-description">A song that speaks what's in my heart</p>
+                        </div>
+                    </div>
+                    
+                    <div class="song-card">
+                        <h4>What I'm Promising</h4>
+                        <div class="audio-player">
+                            <audio controls>
+                                <source src="audio/p22.mp3" type="audio/mpeg">
+                                <source src="audio/p22.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <p class="song-description">A song that promises my forever</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- Photo Gallery -->
             <section class="photo-gallery">
+                <div class="lily-sticker">
+                    <img src="sticker/lily.png" alt="Lily sticker" loading="lazy">
+                </div>
                 <h3>Our Beautiful Memories</h3>
                 <p class="gallery-subtitle">Every moment with you is a treasure</p>
                 
@@ -206,6 +292,16 @@
                         <div class="heart-photo">
                             <img src="teen/WhatsApp Image 2025-09-03 at 22.33.54.jpeg" alt="Love story" loading="lazy">
                         </div>
+                        
+                        <!-- Additional photos to complete the grid -->
+                        <div class="heart-photo">
+                            <img src="teen/IMG-20250726-WA0117.jpg" alt="Beautiful moment" loading="lazy">
+                        </div>
+                        <div class="heart-photo story-continues">
+                            <div class="story-text">
+                                <span>and the story continues.</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -213,16 +309,19 @@
 
             <!-- Interactive Elements -->
             <section class="interactive">
-                <h3>Click the hearts below!</h3>
+                <h3>Click the buttons below for magic!</h3>
                 <div class="heart-container">
-                    <div class="clickable-heart" onclick="createFloatingHeart()">
-                        <i class="fas fa-heart"></i>
+                    <div class="clickable-button confetti-btn" onclick="createConfetti()">
+                        <i class="fas fa-birthday-cake"></i>
+                        <span>Confetti</span>
                     </div>
-                    <div class="clickable-heart" onclick="createFloatingHeart()">
-                        <i class="fas fa-heart"></i>
+                    <div class="clickable-button sparkles-btn" onclick="createSparkles()">
+                        <i class="fas fa-star"></i>
+                        <span>Sparkles</span>
                     </div>
-                    <div class="clickable-heart" onclick="createFloatingHeart()">
+                    <div class="clickable-button heart-btn" onclick="createFloatingHeart()">
                         <i class="fas fa-heart"></i>
+                        <span>Hearts</span>
                     </div>
                 </div>
             </section>
