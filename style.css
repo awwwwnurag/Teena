@@ -1282,7 +1282,7 @@ body::before {
     
     /* Mobile sticker positioning adjustments */
     .rose-sticker {
-        top: 93%;
+        top: 100%;
         right: 0%;
     }
     
